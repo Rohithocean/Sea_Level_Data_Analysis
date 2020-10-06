@@ -1,0 +1,9 @@
+name: example-environment
+channels:
+    - conda-forge
+dependencies:
+    - python    # Python version 3.6
+    - pyferret
+    - ferret_datasets
+    - pip:
+      - ferretmagic
