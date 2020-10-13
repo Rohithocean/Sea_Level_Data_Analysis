@@ -5,5 +5,6 @@ dependencies:
     - python    # Python version 3.6
     - pyferret
     - ferret_datasets
+    - gfortran_linux-64
     - pip:
       - ferretmagic
