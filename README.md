@@ -3,7 +3,9 @@
 # Sea_Level_Data_Analysis  
 
 * [Try it right now on the cloud for free](#try-it-right-now-on-the-cloud-for-free)
-* [Installation](#Pyferret-Installation )
+* [Installation](#Pyferret-Installation)
+* [Practical](#How-can-we-do-the-practicals)
+**
 
 ## Try it right now on the cloud for free
 [Click here](https://mybinder.org/v2/gh/Rohithocean/Sea_Level_Data_Analysis/main) to launch a pre-configured notebook environment on the cloud platform provided freely by the  [binder project](https://mybinder.org). Use the Chrome browser if you have trouble loading that page. Refresh the page if loading fails.
@@ -94,3 +96,5 @@ pyferret $*
 If this script was called `pyferret.sh`, made executable (`chmod 755 pyferret.sh`),
 and placed in a directory listed in your `$PATH` enviroment variable, you can just type
 `pyferret.sh` (followed by any desired arguments) from the command line to run PyFerret.
+
+## How can we do the practicals
