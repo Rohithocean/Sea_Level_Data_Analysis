@@ -112,11 +112,8 @@ AVISO SLA are download from https://las.aviso.altimetry.fr/las/UI.vm.
 * Variable to download : Sea level Anomaly
 * Goto : Save As...
 * Download the data
-### Animation using AVISO SSHA
 ### Linear Trend analysis 
 ### Decadal processes
 ### Interannual processes
-### Tide
-### Cyclone and storm surge 
-### De-tiding 
-### Storm Surge Propagation 
+### Tides and detided sea level 
+### Storm surge and its propagation 
