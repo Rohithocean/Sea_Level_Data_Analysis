@@ -4,7 +4,7 @@
 
 * [Try it right now on the cloud for free](#try-it-right-now-on-the-cloud-for-free)
 * [Pyferret Installation](#Pyferret-Installation)
-* [Practical](#How-can-we-do-the-practicals)
+* [Practical](#HPractical-sessions)
 **
 
 ## Try it right now on the cloud for free
