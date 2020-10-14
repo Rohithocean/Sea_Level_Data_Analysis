@@ -97,7 +97,7 @@ If this script was called `pyferret.sh`, made executable (`chmod 755 pyferret.sh
 and placed in a directory listed in your `$PATH` enviroment variable, you can just type
 `pyferret.sh` (followed by any desired arguments) from the command line to run PyFerret.
 
-## Practical secssions 
+## Practical sessions 
 ### Data Download 
 #### Tide Gauge 
 Tide gauge data can be downloaded from http://uhslc.soest.hawaii.edu/data/. 
