@@ -97,15 +97,21 @@ If this script was called `pyferret.sh`, made executable (`chmod 755 pyferret.sh
 and placed in a directory listed in your `$PATH` enviroment variable, you can just type
 `pyferret.sh` (followed by any desired arguments) from the command line to run PyFerret.
 
-## Practicals secssions 
-### Tide Gauge 
+## Practical secssions 
+### Data Download 
+#### Tide Gauge 
 Tide gauge data can be downloaded from http://uhslc.soest.hawaii.edu/data/. 
 * The UHSLC offers tide gauge data with two levels of quality-control (QC), where more rigorous QC requires more effort and a greater time-lag. 
 Fast Delivery (FD) data are released within 1-2 months of data collection and receive only basic QC focused on large level shifts and obvious outliers. FD data are replaced in the data stream by RQD (see below) as the latter becomes available.
 * Research Quality Data (RQD) receive thorough QC and are considered to be the final science-ready data set. This final QC process is time-consuming, and as a result, the RQD are released 1-2 years after data is received from the data originators by the UHSLC.
-### Altimeter sea surface height anomaly (SSHA)
-AVISO SSHA are download from https://las.aviso.altimetry.fr/las/UI.vm.
-Flow chart : * DataSet * Delayed time - Global - Altimetry * Sea level Anomaly
+#### Altimeter sea level anomaly (SLA)
+AVISO SLA are download from https://las.aviso.altimetry.fr/las/UI.vm.
+##### Flow chart to download 
+* Goto "DataSet"
+* Select : Delayed time-Global-Altimetry
+* Variable to download : Sea level Anomaly
+* Goto : Save As...
+* Download the data
 ### Animation using AVISO SSHA
 ### Linear Trend analysis 
 ### Decadal processes
