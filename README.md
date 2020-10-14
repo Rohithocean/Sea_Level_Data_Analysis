@@ -3,7 +3,7 @@
 # Sea_Level_Data_Analysis  
 
 * [Try it right now on the cloud for free](#try-it-right-now-on-the-cloud-for-free)
-* [Installation](#installation)
+* [Installation](#Pyferret-Installation )
 
 ## Try it right now on the cloud for free
 [Click here](https://mybinder.org/v2/gh/Rohithocean/Sea_Level_Data_Analysis/main) to launch a pre-configured notebook environment on the cloud platform provided freely by the  [binder project](https://mybinder.org). Use the Chrome browser if you have trouble loading that page. Refresh the page if loading fails.
