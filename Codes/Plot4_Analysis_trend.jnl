@@ -1,0 +1,87 @@
+! ----  Long term trend in data ----
+
+use ../Data/TG/Antarctica_d127.nc
+use ../Data/TG/Gan_d109.nc
+use ../Data/TG/Kanton_d013.nc
+use ../Data/TG/Padang_d107.nc
+use ../Data/AVISO_duacs-rep-global-merged-allsat-phy-l4-yearly_1993_2019.nc
+use ../Data/AVISO_trend_monthly.nc
+
+set win/asp=0.4
+
+
+let Antartica = sea_level[d=1,l=@fln:3] ;
+let Gan       = sea_level[d=2,l=@fln:3] ;
+let Kantin    = sea_level[d=3,l=@fln:3] ;
+let Pandang   = sea_level[d=4,l=@fln:3] ;
+
+! -- Antartica linear trend -- 
+
+plot sea_level[d=1],Antartica[d=1,l=@sbx:120]
+let p = t[gt=Antartica[d=1]] ; let q = Antartica[d=1,l=@sbx:120] ; go regresst ; plot/over/thick=3/color=blue qhat
+label 50000,3000,0,0,0.13  @TR@P4`slope*365`mm/Year
+pause
+
+! -- Gan linear trend --
+
+plot sea_level[d=2],Gan[d=2,l=@sbx:120]
+let p = t[gt=Gan[d=2]] ; let q = Gan[d=2,l=@sbx:120] ; go regresst ; plot/over/thick=3/color=blue qhat
+label 58000,1800,0,0,0.13  @TR@P4`slope*365`mm/Year
+pause
+
+! -- Kantin linear trend --
+
+plot sea_level[d=3],Kantin[d=3,l=@sbx:120]
+let p = t[gt=Kantin[d=3]] ; let q = Kantin[d=3,l=@sbx:120] ; go regresst ; plot/over/thick=3/color=blue qhat
+label 80000,1350,0,0,0.13  @TR@P4`slope*365`mm/Year
+pause
+
+! -- Pandang linear trend --
+
+plot sea_level[d=4],Pandang[d=4,l=@sbx:120]
+let p = t[gt=Pandang[d=4]] ; let q = Pandang[d=4,l=@sbx:120] ; go regresst ; plot/over/thick=3/color=blue qhat
+label 40000,2200,0,0,0.13  @TR@P4`slope*365`mm/Year
+pause
+
+set win/asp=.7
+
+let p = t[gt=ssh[d=5]] ; let q = ssh[d=5] ;  go regresst ; palette cmocean_thermal ; 
+
+set mem/si=1000
+GO mp_hammer ; GO mp_grid ssh[d=5] ; GO mp_aspect ; SET GRID ssh[d=5]
+FILL/NOAXIS/lev=(-inf)(0,6,0.6)(inf)/title="AVISO_sea-level-trend (mm/Year)" slope*1000*mp_mask, x_page, y_page
+
+
+let a = `lon[d=1]` + (0)/20 * i ; let b = `lat[d=1]` + (0)/20*i ; go mp_line plot/vs/over/nolab/thick=5/sym=88/color=black  a b
+let a = `lon[d=2]` + (0)/20 * i ; let b = `lat[d=2]` + (0)/20*i ; go mp_line plot/vs/over/nolab/thick=5/sym=88/color=red   a b
+let a = `lon[d=3]` + (0)/20 * i ; let b = `lat[d=3]` + (0)/20*i ; go mp_line plot/vs/over/nolab/thick=5/sym=88/color=green a b
+let a = `lon[d=4]` + (0)/20 * i ; let b = `lat[d=4]` + (0)/20*i ; go mp_line plot/vs/over/nolab/thick=5/sym=88/color=blue  a b
+
+GO mp_label `lon[d=1]`,`lat[d=1]+3`,0,0,0.13 @TR4.2
+GO mp_label `lon[d=2]`,`lat[d=2]+3`,0,0,0.13 @TR3.2
+GO mp_label `lon[d=3]`,`lat[d=3]+3`,0,0,0.13 @TR2.0
+GO mp_label `lon[d=4]-5`,`lat[d=4]-5`,0,0,0.13 @TR3.5
+
+! Global averaged trend AVISO
+
+pl/thick=3 ssh[d=6]*1000 
+
+! Calculate Climatology and Anomaly
+
+use climatological_axes ; cancel data climatological_axes ; let clim =  ssh[d=6,GT=MONTH_GREGORIAN@MOD] ; let anom = ssh[d=6] - clim[gt=ssh[d=6]@asn]
+
+pl/thick=3 (ssh[d=6]-ssh[d=6,l=@ave])*1000, anom*1000
+
+let p =  t[gt=anom] ; let q = anom[l=@sbx:2]*1000 ; go regresst ; pl/thick=2 anom[l=@sbx:2]*1000,qhat
+
+label 60000,40,0,0,0.13  @TR@P2`slope*365`mm/Year
+
+pause 
+
+! Global variability after removing Linear TREND
+
+plot anom[l=@sbx:2]*1000-qhat
+let sla = anom[l=@sbx:2]*1000-qhat
+
+save/file="../Data/AVISO_glo_trend.nc"/clo sla
+

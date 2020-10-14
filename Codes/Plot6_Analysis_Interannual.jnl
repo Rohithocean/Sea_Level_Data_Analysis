@@ -1,0 +1,112 @@
+!-------------- EL-NINO ------------------------------
+
+use ../Data/AVISO_monthly_70S_65N_1993_2019.nc
+use ../Data/AVISO_trend_monthly.nc
+use ../Data/Index/SOI_ELNINO.nc
+
+let Sla_detrend  = SLA[d=1] - SSH[d=2] 
+
+set win/asp=.4
+
+palette cmocean_balance
+set region/t=01-jan-1993:30-dec-2020
+
+pl/vlimit=-3:3/title="EL-NINO-SOI index" soi[d=3]*0
+go bar_chart3 poly/line/thick=0.2/nolabel/fill/ove/key/lev=(-inf)(-3,3,0.5)(inf) soi[d=3] soi[d=3]
+
+ pause
+ 
+set win/asp=.65
+
+fill/t=01-Dec-1997:30-Apr-1998/lev=(-inf)(-30,30,3)(inf) sla_detrend[l=@ave]*100
+
+pause ;
+
+fill/t=01-Dec-2010:30-Apr-2011/lev=(-inf)(-30,30,3)(inf) sla_detrend[l=@ave]*100
+
+Pause;
+let p  = soi[gt=sla[d=1],l=@sbx:5,d=3]*-1 ; let q = sla_detrend[l=@sbx:5] ; go variance ;     
+
+fill/lev=(-inf)(-0.7,0.7,0.1)(inf) correl
+
+pause
+
+let p  = soi[gt=sla[d=1],l=@sbx:5,d=3]*-1 ; let q = sla_detrend[l=@sbx:5] ; go regresst ; 
+
+fill/lev=(-inf)(-5,5,0.5)(inf) slope*100
+
+Pause;
+
+!  -------------------  IOD  ----------------------
+
+use ../Data/Index/DMI_IOD.nc
+
+set win/asp=.4
+
+palette cmocean_balance
+set region/t=01-jan-1993:30-dec-2020
+
+pl/vlimit=-1.5:1.5/title="IOD-DMI index" dmi[d=4]*0
+go bar_chart3 poly/line/thick=0.2/nolabel/fill/ove/key/lev=(-inf)(-1.5,1.5,0.3)(inf) dmi[d=4] dmi[d=4]
+pause
+
+set win/asp=.65
+
+fill/t=01-Oct-1996:30-dec-1996/lev=(-inf)(-30,30,3)(inf) sla_detrend[l=@ave]*100
+
+pause
+
+set win/asp=.65
+
+fill/t=01-sep-2019:30-dec-2019/lev=(-inf)(-30,30,3)(inf) sla_detrend[l=@ave]*100
+
+pause ;
+
+let p  = dmi[gt=sla[d=1],l=@sbx:5,d=4] ; let q = sla_detrend[l=@sbx:5] ; go variance ;
+
+fill/lev=(-inf)(-0.7,0.7,0.1)(inf) correl
+
+pause
+
+let p  = dmi[gt=sla[d=1],l=@sbx:5,d=4] ; let q = sla_detrend[l=@sbx:5] ; go regresst ; 
+
+fill/lev=(-inf)(-5,5,0.5)(inf) slope*100
+
+Pause
+
+! -----------------  SAM  -------------------
+
+use ../Data/Index/SAM_index.nc
+
+set win/asp=.4
+
+palette cmocean_balance
+
+set region/t=01-jan-1993:30-dec-2020
+pl/vlimit=-4:4/title="SAM index" SAM[d=5]*0
+go bar_chart3 poly/line/thick=0.2/nolabel/fill/ove/key/lev=(-inf)(-3,3,0.3)(inf) SAM[d=5] SAM[d=5]
+
+pause
+
+set win/asp=.65
+
+fill/t=15-jun-2010:15-sep-2010/lev=(-inf)(-30,30,3)(inf) sla_detrend[l=@ave]*100
+
+pause ;
+
+set win/asp=.65
+
+fill/t=15-jun-2011:15-sep-2011/lev=(-inf)(-30,30,3)(inf) sla_detrend[l=@ave]*100
+
+pause
+
+let p  = sam[gt=sla[d=1],l=@sbx:5,d=5] ; let q = sla_detrend[l=@sbx:5] ; go variance ;
+
+fill/lev=(-inf)(-0.7,0.7,0.1)(inf) correl
+
+pause 
+
+let p  = sam[gt=sla[d=1],l=@sbx:5,d=5] ; let q = sla_detrend[l=@sbx:5] ; go regresst ;
+
+fill/lev=(-inf)(-5,5,0.5)(inf) slope*100
+

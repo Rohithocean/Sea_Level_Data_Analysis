@@ -1,0 +1,14 @@
+use ../Data/AVISO_duacs-rep-global-merged-allsat-phy-l4-monthly_1993_2019.nc
+ palette cmocean_balance
+! GO mp_hammer
+! GO mp_grid sla[d=1]
+! GO mp_aspect
+
+ repeat/l=1:321 (;\
+   let val = 1.1214953*l ;\
+   GO mp_orthographic `78.504671+val` 0 ;\
+   SET GRID sla[d=1] ;\
+   GO mp_aspect ;\
+   FILL/NOAXIS/lev=(-inf)(-0.2,0.2,.02)(inf)/title="AVISO_sea-level-Anomaly (m)" sla[d=1]*mp_mask, x_page, y_page ;\
+frame/XPIXELS=2048/file=AVISO_anim`l`.png ;\
+)

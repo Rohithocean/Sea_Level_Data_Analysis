@@ -1,0 +1,38 @@
+use ../Data/AVISO_duacs-rep-global-merged-allsat-phy-l4-yearly_1993_2019.nc
+use ../Data/AVISO_glo_trend.nc
+
+use ../Data/Index/PDO_index.nc
+use ../Data/index/NPGO_index.nc
+
+set region/t=01-jan-1992:31-dec-2020
+
+set win/asp=.5
+pl npgo[l=@sbx:48],pdo[d=3,l=@sbx:48]*-1
+pause ; 
+
+let p = SSH[d=1,l=@sbx:4,gt=pdo[d=3]] ; let q = pdo[l=@sbx:48,d=3] ; go variance 
+set win/asp=.7
+palette cmocean_balance
+shade/lev=(-inf)(-0.7,0.7,0.1)(inf) correl
+
+pause ; 
+
+let p = SSH[d=1,l=@sbx:4,gt=pdo[d=3]] ; let q = pdo[l=@sbx:48,d=3] ; go regresst
+set win/asp=.7
+palette cmocean_balance
+shade/lev=(-inf)(-30,30,3)(inf) slope
+
+pause
+
+let p = SSH[d=1,l=@sbx:4,gt=npgo[d=4]] ; let q = npgo[l=@sbx:48,d=4] ; go variance
+set win/asp=.7
+palette cmocean_balance
+shade/lev=(-inf)(-0.7,0.7,0.1)(inf) correl
+
+
+pause
+
+let p = SSH[d=1,l=@sbx:4,gt=npgo[d=4]] ; let q = npgo[l=@sbx:48,d=4] ; go regresst
+set win/asp=.7
+palette cmocean_balance
+shade/lev=(-inf)(-30,30,3)(inf) slope
