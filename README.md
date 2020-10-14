@@ -22,7 +22,7 @@ For more information on using PyFerret, see the Ferret and PyFerret documentatio
 Information about the Ferret email users group, and archives of past discussions from the group (which should be searched prior to sending a question to the email users group) can be found at https://ferret.pmel.noaa.gov/Ferret/email-users-group/
 
 ### Jupyter/iPython notebook
-The latest ferretmagic module from Patrick Brockmann for using PyFerret with the iPython notebook can be obtained using pip install ferretmagic, or see https://pypi.org/project/ferretmagic/. Note that this only installs the ferretmagic module for PyFerret; it does not install PyFerret.
+The latest ferretmagic module from Patrick Brockmann for using PyFerret with the iPython notebook can be obtained using `pip install ferretmagic`, or see https://pypi.org/project/ferretmagic/. Note that this only installs the ferretmagic module for PyFerret; it does not install PyFerret.
 
 ## Anaconda Installation - Linux, OS X, and Windows 10/bash
 
