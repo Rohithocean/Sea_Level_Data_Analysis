@@ -97,4 +97,14 @@ If this script was called `pyferret.sh`, made executable (`chmod 755 pyferret.sh
 and placed in a directory listed in your `$PATH` enviroment variable, you can just type
 `pyferret.sh` (followed by any desired arguments) from the command line to run PyFerret.
 
-## How can we do the practicals
+## Practicals secssions 
+### Tide Gauge data downlaod
+### Altimeter sea surface height anomaly (SSHA) - AVISO data download
+### Animation using AVISO SSHA
+### Linear Trend analysis 
+### Decadal processes
+### Interannual processes
+### Tide
+### Cyclone and storm surge 
+### De-tiding 
+### Storm Surge Propagation 
