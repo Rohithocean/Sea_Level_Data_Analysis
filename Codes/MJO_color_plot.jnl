@@ -1,0 +1,45 @@
+ use "/home/rohith/Desktop/PhDwork/Programs/FERRET/DJFMA_time_mask.nc"
+ use "/home/rohith/Desktop/PhDwork/Programs/NC/rmm_74toRealtime_1990_2017"
+  set region/t=01-Dec-2009:30-dec-2016
+  !let am = amplitude[d=2]*djfma[d=1,gt=amplitude[d=2]]
+  let am = amplitude[d=2]
+  !let am = amplitude[d=2]
+  let amp1=IF amplitude GE 0.0 and amplitude lt 1.0 THEN am
+  let amp2=IF amplitude GE 1.0 and amplitude lt 1.5 THEN am
+  let amp3=IF amplitude GE 1.5 and amplitude lt 2.0 THEN am
+  let amp4=IF amplitude GE 2.0 and amplitude lt 2.5 THEN am
+  let amp5=IF amplitude GE 2.5 THEN am
+
+  let pha= if phase le 6 and phase ge 3 then phase
+
+  let phase1=phase+(amp1*0)
+  let phase2=phase+(amp2*0)
+  let phase3=phase+(amp3*0)
+  let phase4=phase+(amp4*0)
+  let phase5=phase+(amp5*0)
+
+  let p1=pha+(amp1*0)
+  let p2=pha+(amp2*0)
+  let p3=pha+(amp3*0)
+  let p4=pha+(amp4*0)
+  let p5=pha+(amp5*0)
+ ! set window/quality=high/aspect=0.2:axis 1
+ ! set region/t=01-dec-$1:30-apr-$2
+	set win 1 ;  
+set win/asp=.3
+!set win/asp=.3
+  plot/thick=1/color=(0,0,0,20) phase
+  plot/thick=1/over/color=(100,0,0,20) phase1
+  plot/thick=1/over/color=(100,90,0,70) phase2
+  plot/thick=3/over/color=(100,50,00,99) phase3
+  plot/thick=3/over/color=(100,0,0,99) phase4
+  plot/thick=3/over/color=(50,0,0,99) phase5
+!  set win 2 ; 
+!
+!  plot/thick=1/color=(0,0,0,100) phase+am*0
+!  plot/thick=3/color=(100,100,0,100)/over phase1
+!  plot/thick=3/over/color=(100,70,0,100) phase2
+!  plot/thick=3/over/color=(100,30,00,100) phase3
+!  plot/thick=3/over/color=(80,0,0,100) phase4
+!  plot/thick=3/over/color=(30,0,0,100) phase5
+
