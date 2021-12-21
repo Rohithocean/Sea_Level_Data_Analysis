@@ -1,14 +1,8 @@
- use "/home/rohith/Desktop/PhDwork/Programs/FERRET/DJFMA_time_mask.nc"
- use "/home/rohith/Desktop/PhDwork/Programs/NC/rmm_74toRealtime_1990_2017"
-  set region/t=01-Dec-2009:30-dec-2016
-  !let am = amplitude[d=2]*djfma[d=1,gt=amplitude[d=2]]
-  let am = amplitude[d=2]
-  !let am = amplitude[d=2]
-  let amp1=IF amplitude GE 0.0 and amplitude lt 1.0 THEN am
-  let amp2=IF amplitude GE 1.0 and amplitude lt 1.5 THEN am
-  let amp3=IF amplitude GE 1.5 and amplitude lt 2.0 THEN am
-  let amp4=IF amplitude GE 2.0 and amplitude lt 2.5 THEN am
-  let amp5=IF amplitude GE 2.5 THEN am
+  let amp1=IF amplitude GE 0.0 and amplitude lt 1.0 THEN amplitude
+  let amp2=IF amplitude GE 1.0 and amplitude lt 1.5 THEN amplitude
+  let amp3=IF amplitude GE 1.5 and amplitude lt 2.0 THEN amplitude
+  let amp4=IF amplitude GE 2.0 and amplitude lt 2.5 THEN amplitude
+  let amp5=IF amplitude GE 2.5 THEN amplitude
 
   let pha= if phase le 6 and phase ge 3 then phase
 
